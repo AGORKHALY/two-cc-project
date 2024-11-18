@@ -86,7 +86,7 @@ func (r *Repository) DeleteCars(c *fiber.Ctx) error {
 
 // MARK: GetBookById
 func (r *Repository) GetCarById(c *fiber.Ctx) error {
-	carModel := models.Books{}
+	carModel := models.Cars{}
 	id := c.Params("id")
 
 	if id == "" {
@@ -110,7 +110,7 @@ func (r *Repository) GetCarById(c *fiber.Ctx) error {
 
 // MARK: Get All Cars
 func (r *Repository) GetCars(c *fiber.Ctx) error {
-	carModels := &[]models.Books{}
+	carModels := &[]models.Cars{}
 
 	err := r.DB.Find(carModels).Error
 
@@ -149,7 +149,7 @@ func main() {
 		log.Fatal("Error connecting to database")
 	}
 
-	err = models.MigrateBooks(db)
+	err = models.MigrateCars(db)
 
 	if err != nil {
 		log.Fatal("Error migrating database")
